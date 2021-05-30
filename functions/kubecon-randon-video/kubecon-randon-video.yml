@@ -1,0 +1,17 @@
+version: 1.0
+provider:
+  name: openfaas
+functions:
+  kubecon-randon-video:
+    lang: go
+    build_args:
+      GO111MODULE: on
+    handler: ./kubecon-randon-video
+    image: ctadeu/kubecon-randon-video:latest
+    secrets:
+      - cloudnative-twitter-config
+    annotations:
+      topic: "cloudnative.twitter.video"
+    environment:
+      combine_output: false
+      exec_timeout: "300s"
