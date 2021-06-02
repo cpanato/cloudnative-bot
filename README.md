@@ -13,6 +13,11 @@ Currently we have three commands available for any twitter user:
 - `/k8s-patch-schedule` - returns the patch schedule for the active release branches fro Kubernetes
 - `/kubecon-random-video`- returns a random KubeCon video
 
+## Cron Twitter Jobs
+
+- Next Kubecon - tweet how many days you need to wait for the next KubeCon
+- CFP closes - tweet how long the CFP will be open for Proposal submission (TBD)
+
 ## Twitter Stream (OpenFaas Connector-SDK)
 
 You can deploy the Twitter stream using [ko](https://github.com/google/ko) and then deploy it in your K8s cluster
