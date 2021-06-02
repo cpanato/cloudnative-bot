@@ -2,7 +2,7 @@
 
 This is the [@CloudNativeBot](https://twitter.com/CloudNativeBot) Twitter bot code :-)
 
-It uses [OpenFaas](https://github.com/openfaas/faas) to run the several slash commands and also uses the [OpenFaas Connector-SDK](https://github.com/openfaas/connector-sdk) to call the functions
+It uses [OpenFaas](https://github.com/openfaas/faas) to run the several slash commands and also uses the [OpenFaas Connector-SDK](https://github.com/openfaas/connector-sdk) and [Cron Connector](https://github.com/openfaas/cron-connector) to call the functions
 based on the trigger received from the Twitter stream.
 
 ## Available commands at Twitter
@@ -35,9 +35,9 @@ To deploy each function you can use the `faas-cli` command
 For example to deploy the `kubecon-randon-video`
 
 ```
-$ cd functions/kubecon-randon-video
+$ cd functions/
 
-$ faas-cli up -f kubecon-randon-video.yml --gateway https://YOUR-OPENFAAS
+$ faas-cli up -f functions-stack.yml --gateway https://YOUR-OPENFAAS
 
 ```
 
