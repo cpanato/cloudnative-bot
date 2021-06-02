@@ -1,2 +1,5 @@
 kubernetes/stream/secrets.yaml
 release.yaml
+**/secret*
+**/build
+**/template

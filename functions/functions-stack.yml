@@ -1,0 +1,61 @@
+version: 1.0
+provider:
+  name: openfaas
+functions:
+  slash-command:
+    lang: go
+    build_args:
+      GO111MODULE: on
+    handler: ./slash-command
+    image: ctadeu/slash-command:latest
+    secrets:
+      - cloudnative-twitter-config
+    annotations:
+      topic: "cloudnative.twitter.stream"
+    environment:
+      combine_output: false
+      exec_timeout: "300s"
+
+  k8s-patch-release:
+    lang: go
+    build_args:
+      GO111MODULE: on
+    handler: ./k8s-patch-release
+    image: ctadeu/k8s-patch-release:latest
+    secrets:
+      - cloudnative-twitter-config
+    annotations:
+      topic: "cloudnative.twitter.schedule"
+    environment:
+      combine_output: false
+      exec_timeout: "600s"
+
+  kubecon-randon-video:
+    lang: go
+    build_args:
+      GO111MODULE: on
+    handler: ./kubecon-randon-video
+    image: ctadeu/kubecon-randon-video:latest
+    secrets:
+      - cloudnative-twitter-config
+    annotations:
+      topic: "cloudnative.twitter.video"
+    environment:
+      combine_output: false
+      exec_timeout: "300s"
+
+  next-kubecon:
+    lang: go
+    build_args:
+      GO111MODULE: on
+    handler: ./next-kubecon
+    image: ctadeu/next-kubecon:latest
+    secrets:
+      - cloudnative-twitter-config
+    environment:
+      combine_output: false
+      exec_timeout: "60s"
+      NEXT_KUBECON: "12/10/2021 8:00:00"
+    annotations:
+      topic: cron-function
+      schedule: "0 13 * * *"
